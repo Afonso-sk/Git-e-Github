@@ -1,5 +1,5 @@
 # Git-e-Github
-Dicas do Git e Github
+Dicas do Git 
 <p>
   1) Para criar um novo repositório digite:
 
