@@ -116,10 +116,7 @@ Dicas do Git e Github
     <td>Atualiza as informações do repositório local.</td>
   </tr>
   
-  <tr>
-    <td>GitHub: git remote add origin https://github.com/lucasrmagalhaes/projeto.git</td>
-    <td>Adiciona o repositório remoto no diretório local.</td>
-  </tr>
+ 
   
   <tr>
     <td>git branch</td>
