@@ -2,7 +2,7 @@
 Dicas do Git e Github
 
 <h3 align="center">
-  <a href="https://git-scm.com/">Git</a> e <a href="https://github.com/">GitHub</a>: Controle e Compartilhe seu Código
+  <a href="https://git-scm.com/">Git</a> e <a href="https://github.com/">GitHub</a>: Git e Github
 </h3>
 <table>
   
