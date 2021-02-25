@@ -1,163 +1,242 @@
 # Git-e-Github
-Dicas do Git 
-<p>
-  1) Para criar um novo repositório digite:
-
-- crie uma nova pasta, abra-a e execute o comando
-
-git init
-
-
-
-2) Obtenha um repositório criando uma cópia de trabalho em um repositório local executando o comando
-
-git clone /caminho/para/o/repositório
-
-quando usar um servidor remoto, seu comando será
-
-git clone usuário@servidor:/caminho/para/o/repositório
-
-
-
-3) Fluxo de trabalho
-
-- seus repositórios locais consistem em três "árvores" mantidas pelo git. a primeira delas é sua Working Directory que contém os arquivos vigentes. a segunda Index que funciona como uma área temporária e finalmente a HEAD que aponta para o último commit (confirmação) que você fez. 
-
-
-
-4) Adicionar & Confirmar
-
-Você pode propor mudanças (adicioná-las ao Index) usando:
-
-git add <arquivo>
-
-git add *
-
-Este é o primeiro passo no fluxo de trabalho básico do git. Para realmente confirmar estas mudanças (isto é, fazer um commit), use
-
-git commit -m "comentários das alterações"
-
-Agora o arquivo é enviado para o HEAD, mas ainda não para o repositório remoto.
-
-
-
-5) enviando alterações
-
-Suas alterações agora estão no HEAD da sua cópia de trabalho local. Para enviar estas alterações ao seu repositório remoto, execute
-
-git push origin master
-
-Altere master para qualquer ramo (branch) desejado, enviando suas alterações para ele.
-
-
-
-Se você não clonou um repositório existente e quer conectar seu repositório a um servidor remoto, você deve adicioná-lo com
-
-git remote add origin <servidor>
-
-Agora você é capaz de enviar suas alterações para o servidor remoto selecionado.
-
-
-
-6) ramificando
-
-Branches ("ramos") são utilizados para desenvolver funcionalidades isoladas umas das outras. O branch master é o branch "padrão" quando você cria um repositório. Use outros branches para desenvolver e mescle-os (merge) ao branch master após a conclusão. 
-
-
-
-crie um novo branch chamado "funcionalidade_x" e selecione-o usando
-
-git checkout -b funcionalidade_x
-
-retorne para o master usando
-
-git checkout master
-
-e remova o branch da seguinte forma
-
-git branch -d funcionalidade_x
-
-um branch não está disponível a outros a menos que você envie o branch para seu repositório remoto
-
-git push origin <funcionalidade_x>
-
-
-
-6) Atualizar & mesclar
-
-para atualizar seu repositório local com a mais nova versão, execute
-
-git pull
-
-na sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas.
-
-para fazer merge de um outro branch ao seu branch ativo (ex. master), use
-
-git merge <branch>
-
-em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com
-
-git add <arquivo>
-
-antes de fazer o merge das alterações, você pode também pré-visualizá-as usando
-
-git diff <branch origem> <branch destino>
-
-
-
-7) Rotulando
-
-é recomendado criar rótulos para releases de software. Este é um conhecido conceito, que também existe no SVN. Você pode criar um novo rótulo chamado 1.0.0 executando o comando
-
-git tag 1.0.0 1b2e1d63ff
-
-o 1b2e1d63ff representa os 10 primeiros caracteres do id de commit que você quer referenciar com seu rótulo. Você pode obter o id de commit com
-
-git log
-
-você pode também usar menos caracteres do id de commit, ele somente precisa ser único.
-
-
-
-8) Sobrescrever alterações locais
-
-No caso de você ter feito algo errado (que seguramente nunca acontece ;) ) você pode sobrescrever as alterações locais usando o commando
-
-git checkout -- <arquivo>
-
-isto substitui as alterações na sua árvore de trabalho com o conteúdo mais recente no HEAD. Alterações já adicionadas ao index, bem como novos arquivos serão mantidos.
-
-
-
-Se ao invés disso você deseja remover todas as alterações e commits locais, recupere o histórico mais recente do servidor e aponte para seu branch master local desta forma
-
-git fetch origin
-
-git reset --hard origin/master
-
-
-
-8) Dicas úteis
-
-Interface gráfica padrão
-
-gitk
-
-usar saídas do git coloridas
-
-git config color.ui true
-
-exibir log em apenas uma linha por commit
-
-git config format.pretty oneline
-
-fazer inclusões interativas
-
-git add -i
-
-
-
-9) Para zerar credenciais: git config cedential.helper ""
-
-</p>
-
+Dicas do Git e Github
+
+<h3 align="center">
+  <a href="https://git-scm.com/">Git</a> e <a href="https://github.com/">GitHub</a>: Controle e Compartilhe seu Código
+</h3>
+<table>
+  
+  <tr>
+    <th>Comando:</th>
+    <th>Descrição:</th>
+  </tr>
+ 
+  <tr>
+    <td>git config --local user.name "Nome da pessoa"</td>
+    <td>Define o nome localmente da pessoa.</td>
+  </tr>
+  
+  <tr>
+    <td>git config --local user.email "Nome do e-mail"</td>
+    <td>Define o nome localmente do e-mail.</td>
+  </tr>
+  
+  <tr>
+    <td>git config --global user.name "Nome da pessoa"</td>
+    <td>Define o nome globalmente da pessoa.</td>
+  </tr>
+  
+  <tr>
+    <td>git config --global user.email "Nome do e-mail"</td>
+    <td>Define o nome globalmente do e-mail.</td>
+  </tr>
+  
+  <tr>
+    <td>git init</td>
+    <td>Cria um repositório Git.</td>
+  </tr>
+  
+  <tr>
+    <td>git status</td>
+    <td>Analisa o estado do repositório.</td>
+  </tr>
+  
+  <tr>
+    <td>git add nomeDoArquivo</td>
+    <td>Marcar o arquivo para ser salvo (commitado).</td>
+  </tr>
+  
+  <tr>
+    <td>git add .</td>
+    <td>Marcar todos os arquivos para serem salvos (commitados).</td>
+  </tr>
+  
+  <tr>
+    <td>git commit -m "Mensagem"</td>
+    <td>Realiza o commit.</td>
+  </tr>
+  
+  <tr>
+    <td>git log --oneline</td>
+    <td>Lista os logs em linhas de forma mais limpa.</td>
+  </tr>
+  
+  <tr>
+    <td>git log -p</td>
+    <td>Lista os logs com mais detalhes, mostrando o que aconteceu no projeto.</td>
+  </tr>
+  
+  <tr>
+    <td>git log --help</td>
+    <td>Ver algumas opções disponíveis.</td>
+  </tr>
+  
+  <tr>
+    <td><a href="https://devhints.io/git-log">git log cheatsheet</a></td>
+    <td>Comandos para personalizar a busca de logs.</td>
+  </tr>  
+  
+  <tr>
+    <td>git init --bare</td>
+    <td>Cria um repositório que não terá a working tree, ou seja, não conterá uma cópia dos arquivos. Como o repositório servirá apenas como servidor, para que outros membros da equipe sincronizem seus trabalhos, poupa espaço de armazenamento desta forma.</td>
+  </tr>
+  
+  <tr>
+    <td>git remote add nome-repositorio caminho/para/o/repositorio</td>
+    <td>Desta forma teremos um link do repositório local com o repositório remoto, que chamamos de nome-repositorio, que está armazenado em caminho/para/o/repositorio.</td>
+  </tr>
+  
+  <tr>
+    <td>git remote</td>
+    <td>Lista os remotes.</td>
+  </tr>
+  
+  <tr>
+    <td>git remote -v</td>
+    <td>Lista os nomes e endereços.</td>
+  </tr>
+  
+  <tr>
+    <td>git remote rename nome-atual novo-nome</td>
+    <td>Renomea o remote.</td>
+  </tr>
+  
+  <tr>
+    <td>git clone url nome</td>
+    <td>Baixa o repositório localmente. Nome é opcional caso queira definir um nome diferente do original.</td>
+  </tr>
+  
+  <tr>
+    <td>git push origin master</td>
+    <td>Envia os dados para o repositório remoto. Se utilizar git push -u origin master ficará salvo e na próxima vez rodar somente: git push.</td>
+  </tr>
+  
+  <tr>
+    <td>git pull</td>
+    <td>Atualiza as informações do repositório local.</td>
+  </tr>
+  
+  <tr>
+    <td>GitHub: git remote add origin https://github.com/lucasrmagalhaes/projeto.git</td>
+    <td>Adiciona o repositório remoto no diretório local.</td>
+  </tr>
+  
+  <tr>
+    <td>git branch</td>
+    <td>Lista as branches.</td>
+  </tr>
+  
+  <tr>
+    <td>git checkout nome-branch</td>
+    <td>Muda de branch.</td>
+  </tr>
+  
+  <tr>
+    <td>git checkout -b nome-branch</td>
+    <td>Cria e entra na branch.</td>
+  </tr>
+  
+  <tr>
+    <td>git merge nome-branch-secundaria</td>
+    <td>Caso tenha commits fora da branch principal e ocorreu um BUG na branch principal. Acessar a branch principal, corrigir o erro e rodar o comando.</td>
+  </tr>
+  
+  <tr>
+    <td>git rebase nome-branch-secundaria</td>
+    <td>O merge junta os trabalhos e gera um merge commit. O rebase aplica os commits de outra branch na branch atual.</td>
+  </tr>
+  
+  <tr>
+    <td>git checkout -- nome-arquivo</td>
+    <td>Descarta alterações de em arquivo.</td>
+  </tr>
+  <tr>
+    <td>git reset HEAD index.html</td>
+    <td>Desmarcar o arquivo para ser commitado.</td>
+  </tr>
+  
+  <tr>
+    <td>git revert nome-hash</td>
+    <td>Remove as alterações no código do commit.</td>
+  </tr>
+  
+  <tr>
+    <td>git stash</td>
+    <td>Salva os dados modificados para depois.</td>
+  </tr>
+  
+  <tr>
+    <td>git stash list</td>
+    <td>Lista os estados salvos.</td>
+  </tr>
+  
+  <tr>
+    <td>git stash apply 0</td>
+    <td>Aplica as modificações.</td>
+  </tr>
+  
+  <tr>
+    <td>git stash drop 0</td>
+    <td>Remove as modificações.</td>
+  </tr>
+  
+  <tr>
+    <td>git stash pop</td>
+    <td>Aplica e remove.</td>
+  </tr>
+  <tr>
+    <td>git checkout nome-hash</td>
+    <td>Viajando no tempo. Não é possível editar e salvar, apenas se criar uma nova branch ou entrar dentro da master.</td>
+  </tr>
+  <tr>
+    <td>git diff nome-commit..nome-commit</td>
+    <td>Mostra as diferenças entre dois commits.</td>
+  </tr>
+  
+  <tr>
+    <td>git diff</td>
+    <td>Mostra o que foi alterado e o que ainda não foi adicionado para ser commitado.</td>
+  </tr>
+  
+  <tr>
+    <td>git tag -a versao-0.1.0 -m "Lançando a primeira versão."</td>
+    <td>Cria um ponto que não pode ser mais modificado.</td>
+  </tr>
+  
+  <tr>
+    <td>git tag</td>
+    <td>Lista as versões.</td>
+  </tr>
+  
+  <tr>
+    <td>git push origin main versao-0.1.0</td>
+    <td>Subindo a versão.</td>
+  </tr>
+  
+</table>
+<details>
+    <summary>.gitignore</summary>
+      <br />
+      <p align="left">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Arquivo</strong>: .gitignore <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funciona para não monitorar arquivo(s). <br />
+      </p>
+</details>
+<details>
+    <summary>Ramificações</summary>
+      <br />
+      <p align="justify">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branches ("ramos") são utilizados para desenvolver funcionalidades isoladas umas das outras. A branch master é a branch "padrão" quando você cria um repositório. <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;É interessante separar o desenvolvimento de funcionalidades em branches diferentes, para que as mudanças no código para uma não influencie no funcionamento de outra.
+      </p>
+</details>
+<details>
+    <summary>Links</summary>
+      <br />
+      <ul>
+        <li><a href="https://git-school.github.io/visualizing-git/">Visualizing GIT</a></li>
+        <li><a href="http://git-scm.com/book/en/v2">Git Book</a></li>
+        <li><a href="https://lab.github.com/">GitHub Learning Lab</a></li>
+      </ul>
+</details>
